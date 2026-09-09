@@ -10,18 +10,23 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 
+# check for the API keys in the starting to avoid connection issues to LLM and notify the dev
+
 if not GROQ_API_KEY and not OPENAI_API_KEY and not LANGCHAIN_API_KEY:
     raise ValueError("Please set at least one of GROQ_API_KEY, OPENAI_API_KEY, or LANGCHAIN_API_KEY in your .env file.")
 
 # --- Imports ---
+# connecting to LLM via API Keys
 from langchain_groq import ChatGroq
 from langchain.chat_models import ChatOpenAI
 from langchain_community.chat_models import ChatAnthropic
+# prompt and output handling
 from langchain_core.prompts import ChatPromptTemplate
+# converts the LLM output into a string.
 from langchain.schema import StrOutputParser
 from langchain.schema.runnable import Runnable
 from langchain.schema.runnable.config import RunnableConfig
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import chainlit as cl
 import traceback
