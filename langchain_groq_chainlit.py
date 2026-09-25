@@ -162,9 +162,9 @@ async def on_message(message: cl.Message):
     if user_query:
         emotion, emotion_score = analyse_emotion(user_query)
         emotion_icons = {
-            "joy": "😊", "anger": "😠", "sadness": "😢",
-            "fear": "😨", "surprise": "😲", "love": "❤️",
-            "neutral": "😐"
+            "joy": , "anger": , "sadness": ,
+            "fear": , "surprise": , "love": ,
+            "neutral",
         }
         icon = emotion_icons.get(emotion, "")
         await cl.Message(content=f"Emotion: {emotion} {icon} (Score: {emotion_score:.2f})").send()
